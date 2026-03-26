@@ -1,16 +1,24 @@
 package com.guardrianhalilaimanharahap.campusinfo
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.guardrianhalilaimanharahap.campusinfo.databinding.FragmentProfileBinding
 
-class ProfileFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+class ProfileFragment : Fragment(R.layout.fragment_profile) {
+    private var _binding: FragmentProfileBinding? = null
+    private val binding get() = _binding!!
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentProfileBinding.bind(view)
+
+        binding.tvProfileName.text = "Guardrian Khalil Aiman Harahap"
+        binding.tvProfileNIM.text = "NIM: 105223012"
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
